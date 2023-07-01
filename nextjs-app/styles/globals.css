@@ -1,0 +1,40 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+html, body {
+  @apply bg-white text-black;
+  font-family: 'Comic Sans MS', sans-serif;
+}
+
+.marquee-top, .marquee-bottom {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee-top::before, .marquee-bottom::before,
+.marquee-top::after, .marquee-bottom::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  animation: marquee 10s linear infinite;
+}
+
+.marquee-top::before {
+  left: 100%;
+  animation-delay: 5s;
+}
+
+.marquee-bottom::after {
+  left: -100%;
+  animation-delay: 5s;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
